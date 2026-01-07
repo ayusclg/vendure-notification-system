@@ -3,13 +3,14 @@ import { NotificationService } from "../notification.service";
 import { NotificationEntity } from "../notification.entity";
 import { NotificationRecipientEntity } from "../notficationReceiptent.entity";
 import { markReadDto } from "../notification.types";
-import { RequestContext } from "@vendure/core";
+import { Allow, Permission, RequestContext } from "@vendure/core";
 import { Ctx } from "@vendure/core";
 @Resolver()
 export class ShopResolver {
   constructor(private readonly notificationService: NotificationService) {}
 
   @Mutation(() => NotificationEntity)
+  @Allow(Permission.Authenticated)
   async markAsRead(
     @Ctx() context: RequestContext,
     @Args("input") payload: markReadDto
@@ -22,6 +23,7 @@ export class ShopResolver {
   }
 
   @Query(() => [NotificationRecipientEntity])
+  @Allow(Permission.Authenticated)
   async getMyNotifications(@Ctx() context: RequestContext) {
     const userId = context.activeUserId as string;
 
@@ -31,6 +33,7 @@ export class ShopResolver {
   }
 
   @Query(() => Number)
+  @Allow(Permission.Authenticated)
   async countUnreadNotifications(@Ctx() context: RequestContext) {
     const userId = context.activeUserId as string;
     const count =
@@ -39,6 +42,7 @@ export class ShopResolver {
   }
 
   @Query(() => [NotificationRecipientEntity])
+  @Allow(Permission.Authenticated)
   async getMyUnreadNotifications(@Ctx() context: RequestContext) {
     const userId = context.activeUserId as string;
     const myNotifications =
