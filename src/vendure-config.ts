@@ -53,16 +53,17 @@ export const config: VendureConfig = {
     type: "postgres",
     // See the README.md "Migrations" section for an explanation of
     // the `synchronize` and `migrations` options.
-    synchronize: false,
+    synchronize: true,
     migrations: [path.join(__dirname, "./migrations/*.+(js|ts)")],
     logging: false,
     database: process.env.DB_NAME,
     schema: process.env.DB_SCHEMA,
-    host: process.env.DB_HOST,
-    port: +process.env.DB_PORT,
+    // host: process.env.DB_HOST,
+    // port: +process.env.DB_PORT,
     entities: [NotificationEntity, NotificationRecipientEntity],
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
+    // username: process.env.DB_USERNAME,
+    // password: process.env.DB_PASSWORD,
+    url: process.env.URL,
   },
   paymentOptions: {
     paymentMethodHandlers: [dummyPaymentHandler],

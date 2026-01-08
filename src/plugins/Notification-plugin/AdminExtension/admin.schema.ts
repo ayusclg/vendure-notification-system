@@ -13,7 +13,7 @@ export const adminSchema = gql`
     role: String
     toAll: Boolean
   }
-  extend type mutation {
+  extend type Mutation {
     createNotification(input: CreateNotificationInput): Notification!
   }
 `;

@@ -9,22 +9,29 @@
     "dev": "concurrently --kill-others npm:dev:*",
     "build": "tsc",
     "build:dashboard": "vite build",
+    "build:admin": "ts-node compile-admin-ui.ts",
     "start:server": "node ./dist/index.js",
     "start:worker": "node ./dist/index-worker.js",
     "start": "concurrently npm:start:*"
   },
   "dependencies": {
-    "@vendure/asset-server-plugin": "3.5.2",
-    "@vendure/core": "3.5.2",
-    "@vendure/dashboard": "3.5.2",
-    "@vendure/email-plugin": "3.5.2",
-    "@vendure/graphiql-plugin": "3.5.2",
+    "@vendure/asset-server-plugin": "^3.5.2",
+    "@vendure/core": "^3.5.2",
+    "@vendure/dashboard": "^3.5.2",
+    "@vendure/email-plugin": "^3.5.2",
+    "@vendure/graphiql-plugin": "^3.5.2",
     "dotenv": "17.2.3",
-    "pg": "8.16.3"
+    "lucide-react": "^0.562.0",
+    "pg": "8.16.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
+    "@vendure/admin-ui": "^3.5.2",
     "@vendure/cli": "3.5.2",
+    "@vendure/ui-devkit": "^3.5.2",
     "concurrently": "9.2.1",
-    "typescript": "5.8.2"
+    "typescript": "5.8.2",
+    "vite": "^6.4.1"
   }
 }

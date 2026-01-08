@@ -6,6 +6,7 @@ import { adminSchema } from "./AdminExtension/admin.schema";
 import { AdminResolver } from "./AdminExtension/admin.resolver";
 import { NotificationEntity } from "./notification.entity";
 import { NotificationRecipientEntity } from "./notficationReceiptent.entity";
+ 
 @VendurePlugin({
   imports: [PluginCommonModule],
   providers: [NotificationService],
@@ -18,6 +19,7 @@ import { NotificationRecipientEntity } from "./notficationReceiptent.entity";
     schema: adminSchema,
     resolvers: [AdminResolver],
   },
+  dashboard: "./dashboard/index.tsx",
   exports: [],
 })
 export class NotificationPlugin {}

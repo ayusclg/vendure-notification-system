@@ -1,25 +1,25 @@
 import { gql } from "graphql-tag";
 
 export const shopSchema = gql`
-   
   type Notification {
     id: ID!
     title: String!
     message: String!
+    createdAt: DateTime!
   }
 
   type NotificationEntity {
     notification: Notification
     user: User
-    createdAt: Date!
+    createdAt: DateTime!
   }
 
-  extend type query {
-    getMyNotifications( ): NotificationEntity
-    countUnreadNotifications( ): Number
-    getMyUnreadNotifications( ): NotificationEntity
+  extend type Query {
+    getMyNotifications: [NotificationEntity]
+    countUnreadNotifications: Int
+    getMyUnreadNotifications: [NotificationEntity]
   }
-  extend type mutation {
-    markAsRead( ): NotificationEntity
+  extend type Mutation {
+    markAsRead(notificationId: ID!): NotificationEntity
   }
 `;
